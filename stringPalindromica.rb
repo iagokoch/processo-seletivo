@@ -1,18 +1,29 @@
 puts "Escreva uma palavra: \n"
 palavra = gets.chomp
 
-substring = palavra[0..8]
-
-def palindromo(palavra)
-
-  if string == substring.reverse
-    puts "#{substring} é um palíndromo."
-  else
-    puts "#{substring} não é um palíndromo."
+def substrings_palindromas(palavra)
+  palindromos_encontrados = []
+  
+  # Verifica todas as substrings possíveis
+  (0...palavra.length).each do |inicio|
+    (inicio...palavra.length).each do |fim|
+      substring = palavra[inicio..fim]
+      
+      # Ve se tem mais de uma letra e se é palíndroma
+      if substring.length > 1 && substring == substring.reverse
+        palindromos_encontrados << substring
+      end
+    end
   end
-
-  return substring
-
+  
+  if palindromos_encontrados.empty?
+    puts "Não tem nenhuma substring palíndroma em '#{palavra}'."
+  else
+    puts "Substrings palíndromas encontradas em '#{palavra}':"
+    palindromos_encontrados.uniq.each do |palindromo|
+      puts "- #{palindromo}"
+    end
+  end
 end
 
-palindromo(palavra)
+substrings_palindromas(palavra)
