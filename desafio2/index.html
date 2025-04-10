@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulta de CEP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Consulta de Endereços por CEP</h1>
+
+      <div class="search-section">
+        <div class="input-group">
+          <input
+            type="text"
+            id="cep"
+            placeholder="Digite o CEP (apenas números)"
+            maxlength="8"
+          />
+          <button onclick="buscarCEP()">Buscar</button>
+        </div>
+        <div id="error-message" class="error-message"></div>
+      </div>
+
+      <div class="results-section" id="result" style="display: none">
+        <h2>Resultado da Busca</h2>
+        <div class="address-info" id="address-info"></div>
+        <button onclick="salvarEndereco()">Salvar Endereço</button>
+      </div>
+
+      <div class="saved-addresses">
+        <h2>Endereços Salvos</h2>
+        <div class="sort-controls">
+          <label>Ordenar por:</label>
+          <select id="sortField">
+            <option value="cidade">Cidade</option>
+            <option value="bairro">Bairro</option>
+            <option value="estado">Estado</option>
+          </select>
+          <select id="sortOrder">
+            <option value="asc">Crescente</option>
+            <option value="desc">Decrescente</option>
+          </select>
+          <button onclick="ordenarEnderecos()">Aplicar</button>
+        </div>
+        <div id="saved-addresses-list"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
